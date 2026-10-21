@@ -89,3 +89,18 @@ jobs:
         with:
           name: security-report
           path: security-report.html
+
+  # ============ JOB 4: деплой ============
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [ test, lint, security ]
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to GitHub Pages (Documentation)
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
