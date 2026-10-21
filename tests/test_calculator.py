@@ -3,15 +3,12 @@ import sys
 
 import pytest
 
-# Добавляем корень проекта в sys.path, чтобы работал импорт src.calculator
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 from src.calculator import Calculator
 
-
 class TestCalculator:
     def setup_method(self):
-        """Вызывается перед каждым тестом — создаёт свежий калькулятор."""
         self.calc = Calculator()
 
     def test_add(self):
