@@ -1,11 +1,12 @@
 import os
 import sys
-
 import pytest
 
+# Добавляем корень проекта в sys.path
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-from src.calculator import Calculator
+from src.calculator import Calculator  # noqa: E402
+
 
 class TestCalculator:
     def setup_method(self):
